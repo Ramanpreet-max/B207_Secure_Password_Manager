@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Create Account</h1>
+
+<form method="POST">
+
+    <input
+        type="hidden"
+        name="csrf_token"
+        value="{{ csrf_token() }}"
+    >
+
+    <label>Username</label>
+
+    <input
+        type="text"
+        name="username"
+        required
+    >
+
+
+    <label>Email</label>
+
+    <input
+        type="email"
+        name="email"
+        required
+    >
+
+
+    <label>Password</label>
+
+    <input
+        type="password"
+        name="password"
+        minlength="8"
+        required
+    >
+
+
+    <label>Confirm Password</label>
+
+    <input
+        type="password"
+        name="confirm_password"
+        minlength="8"
+        required
+    >
+
+
+    <button type="submit">
+        Register
+    </button>
+
+</form>
+
+<p>
+    Already registered?
+    <a href="{{ url_for('login') }}">
+        Login
+    </a>
+</p>
+
+{% endblock %}

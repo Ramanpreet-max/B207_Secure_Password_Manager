@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Secure Password Manager
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<nav>
+
+    <a href="{{ url_for('dashboard') }}">
+        Password Manager
+    </a>
+
+    {% if session.get("user_id") %}
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('add_credential') }}">
+            Add Credential
+        </a>
+
+        <a href="{{ url_for('generate_password_page') }}">
+            Generate Password
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    {% endif %}
+
+</nav>
+
+
+<main>
+
+    {% with messages = get_flashed_messages(
+        with_categories=true
+    ) %}
+
+        {% for category, message in messages %}
+
+            <div class="alert {{ category }}">
+                {{ message }}
+            </div>
+
+        {% endfor %}
+
+    {% endwith %}
+
+
+    {% block content %}
+
+    {% endblock %}
+
+</main>
+
+</body>
+</html>

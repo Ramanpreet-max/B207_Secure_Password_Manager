@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Secure Password Manager</h1>
+
+<form method="POST">
+
+    <input
+        type="hidden"
+        name="csrf_token"
+        value="{{ csrf_token() }}"
+    >
+
+    <label>Email</label>
+
+    <input
+        type="email"
+        name="email"
+        required
+    >
+
+
+    <label>Password</label>
+
+    <input
+        type="password"
+        name="password"
+        required
+    >
+
+
+    <button type="submit">
+        Login
+    </button>
+
+</form>
+
+<p>
+    New user?
+    <a href="{{ url_for('register') }}">
+        Create account
+    </a>
+</p>
+
+{% endblock %}
